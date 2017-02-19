@@ -1,0 +1,38 @@
+baseurl: https://hugoboilerplate.netlify.com
+defaultContentLanguage: en
+languageCode: en-US
+metaDataFormat: yaml
+paginate: 5
+# theme: default
+
+#####
+
+title: Hughost
+params:
+ description: Ghost-like boilerplate for Hugo Static Site Generator
+ image: https://unsplash.it/1200/630/?random
+
+#####
+
+taxonomies:
+ tag: tags
+
+#####
+
+menu: 
+  main:
+    - Name: Home
+      url: /
+      weight: 0
+    - Name: About
+      url: /about/
+      weight: 10
+    - Name: Fables
+      url: /tag/fables/
+      weight: 20
+    - Name: Speeches
+      url: /tag/speeches/
+      weight: 30
+    - Name: Start a Blog
+      url: https://ghost.org/
+      weight: 40

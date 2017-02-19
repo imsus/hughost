@@ -1,0 +1,7 @@
+<nav class="db sticky bg-near-white bb b--moon-gray mb4" style="top: -1px">
+  <div class="flex mw8 center">
+    {{ range .Site.Menus.main }}
+      <a class="db pa3 no-underline blue" href="{{ .URL }}">{{ .Name }}</a>
+    {{ end }}
+  </div>
+</nav>

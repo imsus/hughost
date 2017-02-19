@@ -1,0 +1,12 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+/
+  Content-Security-Policy: default-src 'self'; script-src 'strict-dynamic'
+  'sha256-j/BDxmM0PMT7A8x6y6sDVLR+R8XL9r6GI8Iw8UJzLkE=' 'unsafe-inline' https:;
+  style-src 'self' 'unsafe-inline'; img-src 'self' www.google-analytics.com
+  static.hotjar.com; font-src 'self'; connect-src 'self' *.hotjar.com:*
+  wss://localhost:3000; child-src 'self' vars.hotjar.com; media-src 'self'
+  v.kartuntomandjerry.com; object-src 'none'; upgrade-insecure-requests; report-uri
+  https://sentry.io/api/127433/csp-report/?sentry_key=09e92bda56634acbb615351de25198fa;

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <title>{{ .Site.Title }}</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="sans-serif bg-white black-80">
+  
+  <div id="root"> <!-- Root -->
+
+    <header class="bg-near-white pv2 bb b--moon-gray">
+      <div class="mw8 center ph2 flex items-center">
+        <a class="flex items-center no-underline black-80" href="/">
+          <img src="/img/hughost.png" alt="" width="36">
+          <div class="ml2 mr4">
+            <h1 class="ma0 f3 lh-title">{{ .Site.Title }}</h1>
+          </div>
+        </a>
+        <nav class="db">
+          <div class="flex mw8 center">
+            <a class="db pv2 ph3 no-underline blue" href="">Home</a>
+            <a class="db pv2 ph3 no-underline blue" href="">About</a>
+            <a class="db pv2 ph3 no-underline blue" href="">Fables</a>
+            <a class="db pv2 ph3 no-underline blue" href="">Speeches</a>
+            <a class="db pv2 ph3 no-underline blue" href="">Start a Blog</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    {{ if .Params.image }}
+    <div class="pv7-l pv6-m pv5 cover bg-center" style="background-image: url({{ .Params.image }})"></div>
+    {{ end }}
+
+    <div class="flex mw7 center">
+      <main class="flex-auto pa2 mb4 mt4">
+        <article class="mb5">
+          <header>
+            <h1 class="f1 lh-solid mt0 mb3">{{ .Title }}</h1>
+            <time class="db">{{ .Date.Format "2 January 2006" }}</time>
+          </header>
+          <main class="nested-copy-line-height nested-headline-line-height nested-list-reset nested-copy-seperator nested-links f4-l f5">
+            {{ .Content }}
+          </main>
+        </article>
+
+        {{ range where $.Site.Pages "Type" "author" }}
+          {{ if eq .Slug $.Params.author }}
+          <div class="flex items-start">
+            <img class="br-pill w3 h3" src="{{ .Params.image }}" alt="" style="object-fit: cover">
+            <div class="ml3">
+              <h2 class="mt0 mb1 measure lh-title f3"><a class="black-80 no-underline" href="{{ .Permalink }}">{{ .Params.name }}</a></h2>
+              <p class="mt0 mb3 measure lh-copy">{{ .Params.bio }}</p>
+              <div>
+                <small class="dib">{{ .Params.location }}</small>
+                <small class="dib ml3"><a class="blue" href="{{ .Params.website }}">{{ .Params.website }}</a></small>
+              </div>
+            </div>
+          </div>
+          {{ end }}
+        {{ end }}
+
+      </main>
+
+    </div>
+
+    {{ partial "footer" . }}
+  </div> <!-- ./Root -->
+
+  <script src="/js/script.js" data-turbolinks-eval="false"></script>
+  <!--<script src="https://unpkg.com/turbolinks@5.0.0" data-turbolinks-eval="false"></script>-->
+</body>
+</html>

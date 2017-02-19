@@ -1,0 +1,99 @@
+{{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
+
+<!doctype html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <title>{{ .Site.Title }}</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="sans-serif bg-white black-80">
+  
+  <div id="root"> <!-- Root -->
+
+    {{ if eq $paginator.PageNumber 1 }}
+    <header class="bg-near-white pt4 pb3">
+      <div class="mw8 center ph2 flex items-center">
+        <img src="/img/hughost.png" alt="" width="112">
+        <div class="ml3">
+          <h1 class="ma0 f1 lh-title">{{ .Site.Title }}</h1>
+          <p class="ma0 f4 lh-copy">{{ .Site.Params.description }}</p>
+        </div>
+      </div>
+    </header>
+    {{ partial "menu" . }}
+    {{ else }}
+    <header class="bg-near-white pv3">
+      <div class="mw8 center ph2 flex items-center">
+        <img src="/img/hughost.png" alt="" width="64">
+        <div class="ml3">
+          <h1 class="ma0 f2 lh-title">{{ .Site.Title }}</h1>
+          <p class="ma0 f5 lh-copy">{{ .Site.Params.description }}</p>
+        </div>
+      </div>
+    </header>
+    {{ partial "menu" . }}
+    {{ end }}
+
+    <div class="mw7 center">
+      <main class="flex-auto pa2 mb4">
+
+        {{ if gt $paginator.PageNumber 1 }}
+          {{ partial "pagination" $paginator }}
+        {{ end }}
+
+        {{ range $paginator.Pages }}
+          <article class="mw7 mb4">
+            <h1 class="mt0 mb2 f2 lh-title measure"><a class="no-underline black-80" href="{{ .Permalink }}">{{ .Title }}</a></h1>
+            {{ if .Params.description }}
+            <p class="mt0 mb3 f4 lh-copy measure">{{ .Params.description | markdownify }}</p>
+            {{ end }}
+            <small class="db black-60 flex items-center">
+              {{ $author := .Params.author }}
+              {{ range where $.Site.Pages "Type" "author" }}
+                {{ if eq .Slug $author }}
+                  <a class="black-60 flex items-center" href="/author/{{ .Slug }}/">
+                    <img class="br-pill w2 h2" src="{{ .Params.image }}" width="32" height="32" alt="" style="object-fit: cover">
+                    <span class="ml2">{{ .Params.name }}</span>
+                  </a>
+                {{ end }}
+              {{ end }}
+              {{ if .Params.tags }}
+                <span class="ml1">on
+                  {{ range .Params.tags }}
+                    <a class="black-60" href="/tags/{{ . | urlize }}/">{{ . }}</a>
+                  {{ end }}
+                </span>
+              {{ end }}
+              <span class="ml2">|<time class="ml2">{{ dateFormat "2 Jan 2006" .Date }}</time></span>
+            </small>
+            <hr class="mt4 db bt-0 br-0 bl-0 bb b--light-gray w5">
+          </article>
+        {{ end }}
+
+        {{ partial "pagination" $paginator }}
+
+      </main>
+
+      <!--<aside class="pa2 w5 flex-none">
+        <nav class="flex flex-column sticky top-2">
+          <a class="db pv2 blue" href="">Home</a>
+          <a class="db pv2 blue" href="">About</a>
+          <a class="db pv2 blue" href="">Fables</a>
+          <a class="db pv2 blue" href="">Speeches</a>
+          <a class="db pv2 blue" href="">Start a Blog</a>
+        </nav>
+      </aside>-->
+
+    </div>
+
+    {{ partial "footer" . }}
+  </div> <!-- ./Root -->
+
+  <script src="/js/script.js" data-turbolinks-eval="false"></script>
+  <!--<script src="https://unpkg.com/turbolinks@5.0.0" data-turbolinks-eval="false"></script>-->
+</body>
+</html>

@@ -1,0 +1,17 @@
+{{ if (lt .NumberOfElements .TotalNumberOfElements) }}
+<div class="flex mb4 items-center">
+  <div class="flex-none w-30">
+    {{ if .HasPrev }}
+      <a class="ph3 pv2 ba b--moon-gray dib br2 no-underline black-60" href="{{ .Prev.URL }}">← Newer Posts</a>
+    {{ end }}
+  </div>
+  <div class="flex-auto w-40 mh3 tc">
+    <span class="black-60">Page {{ .PageNumber }} of {{ .TotalPages }}</span>
+  </div>
+  <div class="flex-none w-30 tr">
+    {{ if .HasNext }}
+      <a class="ph3 pv2 ba b--moon-gray dib br2 no-underline black-60" href="{{ .Next.URL }}">Older Posts →</a>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

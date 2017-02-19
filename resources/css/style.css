@@ -1,0 +1,36 @@
+.sticky {
+  position: sticky
+}
+
+article p,
+article ul,
+article ol,
+article dl,
+article blockquote {
+  max-width: 30em;
+}
+
+article p > img {
+  position: relative;
+  display: block;
+  left: 0;
+  right: 0;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+
+article hr {
+  max-width: 8rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  border-color: #eee;
+}
+
+article blockquote {
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid;
+  font-family: athelas;
+  font-style: italic;
+}
