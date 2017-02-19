@@ -13,7 +13,7 @@
   <div id="root"> <!-- Root -->
 
     <header class="bg-near-white pv2 bb b--moon-gray">
-      <div class="mw8 center ph2 flex items-center">
+      <div class="mw7 center ph2 flex items-center">
         <a class="flex items-center no-underline black-80" href="/">
           <img src="/img/hughost.png" alt="" width="36">
           <div class="ml2 mr4">
@@ -48,6 +48,17 @@
           </main>
         </article>
 
+        <section class="br2 center pa3 tc mb4">
+          <img class="dib w3 mb2" src="/img/hughost.png" alt="">
+          <h1 class="f3 mt0 mb2 lh-title">Get the best of {{ $.Site.Title }} delivered to your inbox.</h1>
+          <p class="ma0 mb3 w-100">Sign up for our newsletter!</p>
+          <form class="mb3 flex justify-center" action="">
+            <input class="input-reset bb bt-0 bl-0 br-0 b--moon-gray pv2 pl3 w5 f4" type="email" placeholder="yourname@example.com" required>
+            <button class="button-reset br-pill br--right bg-blue white bn ph3 pv2 pointer" type="submit">Subscribe</button>
+          </form>
+          <small class="db">or subscribe <a class="blue" href="">via RSS</a> with Feedly!</small>
+        </section>
+
         {{ range where $.Site.Pages "Type" "author" }}
           {{ if eq .Slug $.Params.author }}
           <div class="flex items-start">
@@ -58,6 +69,15 @@
               <div>
                 <small class="dib">{{ .Params.location }}</small>
                 <small class="dib ml3"><a class="blue" href="{{ .Params.website }}">{{ .Params.website }}</a></small>
+              </div>
+            </div>
+            <div class="flex-auto"></div>
+            <div class="ml3">
+              <div class="b mb3 f4">Share this post</div>
+              <div class="flex">
+                <a class="mr3 mb3" href=""><img src="https://image.flaticon.com/icons/svg/174/174876.svg" alt="" width="32" height="32"></a>
+                <a class="mr3 mb3" href=""><img src="https://image.flaticon.com/icons/svg/174/174848.svg" alt="" width="32" height="32"></a>
+                <a class="mr3 mb3" href=""><img src="https://image.flaticon.com/icons/svg/174/174851.svg" alt="" width="32" height="32"></a>
               </div>
             </div>
           </div>
