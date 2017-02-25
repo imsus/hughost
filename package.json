@@ -17,6 +17,6 @@
     "tachyons": "^4.6.2"
   },
   "devDependencies": {
-    "laravel-mix": "^0.8.1"
+    "laravel-mix": "^0.8.7"
   }
 }
